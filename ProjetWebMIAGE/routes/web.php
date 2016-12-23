@@ -19,8 +19,6 @@ Route::post('/connexion', 'ConnexionController@connect');
 Route::post('/inscription','InscriptionController@inscrip');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', function (){
-        return view('home');
-    });
+    Route::get('/home','HomeController@getSeries');
     Route::get('/firstconnexion','FirstConnexionController@getFilm');
 });
