@@ -1,0 +1,85 @@
+@font-face {
+    font-family: kimberley;
+    src: url("../fonts/kimberley.ttf");
+}
+
+.text_accueil_non_connecte{
+    position: absolute;
+    z-index: 1;
+    padding-left: 40px;
+    padding-top: 120px;
+
+}
+
+.logo_accueil_non_connecte, .logo_firstconnection{
+    font-family: kimberley, sans-serif;
+    font-size: 7em;
+    font-style: oblique;
+    color: #E0E0E0;
+    text-shadow: 2px 2px 2px #000;
+    letter-spacing: 0.2em;
+}
+
+.carousel.afade {
+    opacity: 1;
+}
+
+.carousel.afade .item {
+    transition: opacity ease-out .7s;
+    left: 0;
+    opacity: 0; /* hide all slides */
+    top: 0;
+    position: absolute;
+    width: 100%;
+    display: block;
+}
+
+.carousel.afade .item:first-child {
+    top: auto;
+    opacity: 1; /* show first slide */
+    position: relative;
+}
+
+.carousel.afade .item.active {
+    opacity: 1;
+}
+
+#caroussel_accueil_non_connecte{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+}
+
+#caroussel_accueil_non_connecte, #caroussel_accueil_non_connecte .item, #caroussel_accueil_non_connecte .active, #caroussel_accueil_non_connecte .carousel-inner {
+    height: 100vh;
+}
+
+#caroussel_accueil_non_connecte .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+    filter: brightness(50%);
+    -webkit-filter: brightness(50%);
+    -moz-filter: brightness(50%);
+    -o-filter: brightness(50%);
+}
+
+.modalAccueil .modal-header,.modalAccueil h4,.modalAccueil .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+#firstconnection{
+    background-color: #141414;
+}
+
+
+
