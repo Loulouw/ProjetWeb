@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use App\users;
-use Illuminate\View\View;
 
 class InscriptionController extends Controller
 {
@@ -66,7 +64,7 @@ class InscriptionController extends Controller
 
     private function checkEmailDispo($mail){
         $res = false;
-        if(users::where('email','=',$mail)->first() == null) $res = true;
+        if(User::where('email','=',$mail)->first() == null) $res = true;
         return $res;
     }
 

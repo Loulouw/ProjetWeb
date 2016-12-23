@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" name="login" value="Se connecter"
+                            <input type="submit" name="register" value="S'inscrire"
                                    class="btn btn-success btn-block btn-lg"/>
                         </div>
                     </fieldset>

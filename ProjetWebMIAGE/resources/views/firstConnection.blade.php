@@ -4,13 +4,13 @@
     @include('includes.header')
 </head>
 <body>
-<div id="firstconnection" class="container">
-    <div class="logo_firstconnection">
-        FlixNet
+<div class="flex-center position-ref full-height">
+    <div class="entete_firstconnexion">
+        <div class="logoflixnet">
+            FlixNet
+        </div>
+        Veuillez sélectionner 3 séries que vous avez déjà vues ou qui, potentiellement, pourrez-vous intéresser.
     </div>
-    Veuillez sélectionner 3 séries que vous avez déjà vues ou qui, potentiellement, pourrez-vous intéresser.
-
-
 
 </div>
 <script src="js/app.js"></script>
