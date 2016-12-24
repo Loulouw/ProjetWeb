@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class seasonsepisodes extends Model
+class SeasonsEpisodes extends Model
 {
     protected $table='seasonsepisodes';
-    protected $timestamps=false;
+    public $timestamps=false;
 }

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class actors extends Model
+class Actors extends Model
 {
     protected $table='actors';
     protected $primaryKey='id';
-    protected $timestamps=false;
+    public $timestamps=false;
 }

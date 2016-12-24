@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class FirstConnexionController extends Controller
 {
-    public function getFilm(){
+    public function getSeries(){
         //SELECT * FROM `series` ORDER BY popularity DESC LIMIT 0,30"
-        $films = series::orderBy('popularity','desc')->take(30)->get();
-        dd(films);
+        $series = series::orderBy('popularity','desc')->take(30)->get();
+        dd($series);
         return view('firstconnexion');
     }
 }

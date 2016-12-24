@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class usersepisodes extends Model
+class UsersEpisodes extends Model
 {
     protected $table='usersepisodes';
-    protected $timestamps=false;
+    public $timestamps=false;
 }

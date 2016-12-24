@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class seasons extends Model
+class Seasons extends Model
 {
     protected $table='seasons';
     protected $primaryKey='id';
-    protected $timestamps=false;
+    public $timestamps=false;
 }

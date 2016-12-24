@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class seriesgenres extends Model
+class SeriesGenres extends Model
 {
     protected $table='seriesgenres';
-    protected $timestamps=false;
+    public $timestamps=false;
 }
