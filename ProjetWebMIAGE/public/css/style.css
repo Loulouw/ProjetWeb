@@ -3,21 +3,26 @@
     src: url("../fonts/kimberley.ttf");
 }
 
-.text_accueil_non_connecte{
+@font-face {
+    font-family: AvenirBold;
+    src: url("../fonts/AvenirLTStd-Black.otf")
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url("../fonts/AvenirLTStd-Book.otf")
+}
+
+body{
+    font-family: Avenir;
+}
+
+.text_accueil_non_connecte {
     position: absolute;
     z-index: 1;
     padding-left: 40px;
     padding-top: 120px;
 
-}
-
-.logo_accueil_non_connecte, .logo_firstconnection{
-    font-family: kimberley, sans-serif;
-    font-size: 7em;
-    font-style: oblique;
-    color: #E0E0E0;
-    text-shadow: 2px 2px 2px #000;
-    letter-spacing: 0.2em;
 }
 
 .carousel.afade {
@@ -44,11 +49,11 @@
     opacity: 1;
 }
 
-#caroussel_accueil_non_connecte{
+#caroussel_accueil_non_connecte {
     position: absolute;
     z-index: -1;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 #caroussel_accueil_non_connecte, #caroussel_accueil_non_connecte .item, #caroussel_accueil_non_connecte .active, #caroussel_accueil_non_connecte .carousel-inner {
@@ -70,13 +75,48 @@
     -o-filter: brightness(50%);
 }
 
-.modalAccueil .modal-header,.modalAccueil h4,.modalAccueil .close {
+.modalAccueil .modal-header, .modalAccueil h4, .modalAccueil .close {
     background-color: #5cb85c;
-    color:white !important;
+    color: white !important;
     text-align: center;
     font-size: 30px;
 }
 
+.firstconnexionpage{
+    background-color: #141414;
+    width: 100%;
+    height: 100%;
+}
 
+.entete_firstconnexion{
+    color:white;
+    margin-left: 50px;
+}
 
+.instructionFirstConnexion{
+    font-size: 2em;
+}
 
+.flixnet_logo {
+    font-family: kimberley, sans-serif;
+    font-size: 7em;
+    font-style: oblique;
+    color: #E0E0E0;
+    text-shadow: 2px 2px 2px red;
+    letter-spacing: 0.2em;
+}
+
+.imgFilm{
+    width: 80%;
+    border: 2px white solid;
+    border-radius: 5px;
+}
+
+.imgFilm:hover{
+    border: 2px darkgreen solid;
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+    transform:scale(1.25);
+}

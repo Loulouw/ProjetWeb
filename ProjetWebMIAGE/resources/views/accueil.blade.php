@@ -28,11 +28,10 @@
                 </div>
             </div>
         </div>
+
         <!--Texte placé à l'index 1-->
         <div class="text_accueil_non_connecte">
-            <div class="logo_accueil_non_connecte">
-                FlixNet
-            </div>
+            <div class="flixnet_logo">FlixNet</div>
             <button class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#modalConnexion">
                 Connexion
             </button>
@@ -50,8 +49,8 @@
 <script src="js/script.js"></script>
 <?php
 
-if(session('messageErreurInscription')) echo '<script type="text/javascript">$("#modalInscription").modal("show");</script>';
-if(session('messageErreurConnexion')) echo '<script type="text/javascript">$("#modalConnexion").modal("show");</script>';
+if (session('messageErreurInscription')) echo '<script type="text/javascript">$("#modalInscription").modal("show");</script>';
+if (session('messageErreurConnexion')) echo '<script type="text/javascript">$("#modalConnexion").modal("show");</script>';
 
 ?>
 </body>
