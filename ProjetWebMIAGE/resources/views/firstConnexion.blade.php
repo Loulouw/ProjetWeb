@@ -6,10 +6,10 @@ if(isset($series)){
     $ligne="<div class='row'>";
     foreach ($series as $s){
         $count++;
-        $ligne .= "<div class='col-xs-2'><img class='imgFilm img-rounded img-responsive' src='" . $urlBase . $s->poster_path . "' alt='". $s->original_name ."'></div>";
+        $ligne .= "<div class='col-xs-2'><img idseries='". $s->id ."' class='imgSeriesFirstConnexion img-rounded img-responsive' src='" . $urlBase . $s->poster_path . "' alt='". $s->original_name ."'></div>";
         if($count == 6){
             $count = 0;
-            $seriesListFinal .= $ligne . "</div><br>";
+            $seriesListFinal .= $ligne . "</div><br><br>";
             $ligne = "<div class='row'>";
         }
     }
@@ -39,6 +39,6 @@ if(isset($series)){
     </div>
 </div>
 <script src="js/app.js"></script>
-<script src="js/script.js"></script>
+<script src="js/selectFirstConnexion.js"></script>
 </body>
 </html>

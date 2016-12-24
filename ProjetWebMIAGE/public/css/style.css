@@ -106,17 +106,17 @@ body{
     letter-spacing: 0.2em;
 }
 
-.imgFilm{
+.imgSeriesFirstConnexion{
     width: 80%;
     border: 2px white solid;
     border-radius: 5px;
 }
 
-.imgFilm:hover{
+/*.imgSeriesFirstConnexion:hover{
     border: 2px darkgreen solid;
     -webkit-transform:scale(1.25); /* Safari and Chrome */
-    -moz-transform:scale(1.25); /* Firefox */
-    -ms-transform:scale(1.25); /* IE 9 */
-    -o-transform:scale(1.25); /* Opera */
-    transform:scale(1.25);
+/*-moz-transform:scale(1.25); /* Firefox */
+  /*  -ms-transform:scale(1.25); /* IE 9 */
+    /*-o-transform:scale(1.25); /* Opera */
+    /*transform:scale(1.25);
 }
