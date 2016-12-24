@@ -30,7 +30,17 @@ $(document).ready(function () {
             $(this).css('filter','brightness(1.3)');
             $(this).css('border','2px green solid');
             $(this).css('transform','scale(1.25)');
+        }
 
+        if(seriesSelectionne.length >= 3){
+            $('#boutonFirstConnexion').empty();
+            var button = "<form role='form' action='' method='post' name='firstSelectionForm'>";
+            seriesSelectionne.forEach(function (e) {
+               button += "<input type='hidden' name='series[]' value='" + e + "'>"
+            });
+            button += "<button class='btn btn-success btn-block btn-lg'>Suivant</button></form>";
+
+            $('#boutonFirstConnexion').append(button)
         }
     })
     

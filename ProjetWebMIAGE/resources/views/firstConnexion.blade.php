@@ -37,6 +37,9 @@ if(isset($series)){
         echo $seriesListFinal;
         ?>
     </div>
+    <div id="boutonFirstConnexion">
+
+    </div>
 </div>
 <script src="js/app.js"></script>
 <script src="js/selectFirstConnexion.js"></script>
