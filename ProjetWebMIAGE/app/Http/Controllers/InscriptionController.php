@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class InscriptionController extends Controller
 {
@@ -50,9 +51,10 @@ class InscriptionController extends Controller
             $user->email = $request->email;
             $user->save();
             $messageRes = "<div class=\"alert alert-success\"><strong>Inscription réussie! </strong>Veuillez-vous connecter</div>";
-            return view('accueil',['messageErreurConnexion' => $messageRes,'mailConnexion' => $request->email]);
+
+            return Redirect::to('/')->with('messageErreurInscription',$messageRes)->with('mailConnexion',$request->email);
         }else{
-            return view('accueil',['messageErreurInscription' => $messageRes,'mailInscription' => $email,'pseudoInscription' => $pseudo]);
+            return Redirect::to('/')->with('messageErreurInscription',$messageRes)->with('mailConnexion',$email)->with('pseudoInscription',$pseudo);
         }
     }
 

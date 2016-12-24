@@ -49,8 +49,9 @@
 <script src="js/app.js"></script>
 <script src="js/script.js"></script>
 <?php
-if(isset($messageErreurInscription)) echo '<script type="text/javascript">$("#modalInscription").modal("show");</script>';
-if(isset($messageErreurConnexion)) echo '<script type="text/javascript">$("#modalConnexion").modal("show");</script>';
+
+if(session('messageErreurInscription')) echo '<script type="text/javascript">$("#modalInscription").modal("show");</script>';
+if(session('messageErreurConnexion')) echo '<script type="text/javascript">$("#modalConnexion").modal("show");</script>';
 
 ?>
 </body>

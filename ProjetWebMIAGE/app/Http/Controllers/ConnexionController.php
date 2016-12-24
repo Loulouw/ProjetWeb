@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 
 class ConnexionController extends Controller
 {
@@ -14,14 +15,14 @@ class ConnexionController extends Controller
         $email="";
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             if($request->user()->firstconnexion == 1){
-                return view("firstconnection");
+                return Redirect::to('/firstConnexion');
             }else{
-                return view("home");
+                return Redirect::to('/home');
             }
         }else{
-            $messageRes .= "<li>Erreur dans la connexion, email ou mot de passe incorrect</li>";
+            $messageRes .= "<li>Erreur dans la connexion, e-mail ou mot de passe incorrect</li>";
         }
         $messageRes .= "</div>";
-        return view('accueil',['messageErreurConnexion' => $messageRes,'mailConnexion' => $email]);
+        return Redirect::to('/')->with('messageErreurConnexion',$messageRes)->with('mailConnexion',$email);
     }
 }

@@ -8,11 +8,9 @@
             </div>
             <div class="modal-body">
                 <?php
-                if(isset($mailInscription)) $mail = $mailInscription; else $mail = "";
-                if(isset($pseudoInscription)) $pseudo = $pseudoInscription; else $pseudo = "";
-                if(isset($messageErreurInscription)){
-                    echo $messageErreurInscription;
-                }
+                if(session('mailInscription')) $mail = session('mailInscription'); else $mail = "";
+                if(session('pseudoInscription')) $pseudo = session('pseudoInscription'); else $pseudo = "";
+                if(session('messageErreurInscription')) echo session('messageErreurInscription');
                 ?>
                 <form role="form" action="{{action('InscriptionController@inscrip')}}" method="post"
                       name="inscriptionform">

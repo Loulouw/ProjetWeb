@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('accueil');
-});
+Route::group(['middleware' => 'web'],function (){
+    Route::get('/', function () {
+        return view('accueil');
+    });
 
-Route::post('/connexion', 'ConnexionController@connect');
-Route::post('/inscription','InscriptionController@inscrip');
+    Route::post('/connexion', 'ConnexionController@connect');
+    Route::post('/inscription','InscriptionController@inscrip');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home','HomeController@getSeries');
-    Route::get('/firstconnexion','FirstConnexionController@getFilm');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/firstConnexion','FirstConnexionController@getSeries');
+        Route::get('/home','HomeController@getSeries');
+    });
 });
