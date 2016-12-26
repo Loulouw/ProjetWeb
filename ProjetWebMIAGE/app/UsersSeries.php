@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsersSeries extends Model
 {
-    protected $table='usersepisodes';
+    protected $table='usersseries';
     public $timestamps=false;
 }

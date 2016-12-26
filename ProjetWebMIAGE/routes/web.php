@@ -23,5 +23,6 @@ Route::group(['middleware' => 'web'],function (){
         Route::get('/firstConnexion','FirstConnexionController@getSeries');
         Route::get('/home','HomeController@getSeries');
         Route::post('/home','HomeController@firstConnexionSeries');
+        Route::post('/logout', 'LogoutController@logout');
     });
 });
