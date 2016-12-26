@@ -20,7 +20,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{url('home')}}">Accueil</a></li>
+                <li><a href="{{url('home')}}">Accueil</a></li>
                 <li><a href="#">Ma Bibliothèque</a></li>
             </ul>
             <form class="navbar-form navbar-left">
@@ -53,15 +53,18 @@
     <?php
 
     $seriesListFinal = "";
-
     $urlBase = "https://image.tmdb.org/t/p/w500";
     $count = 0;
     $ligne = "<div class='row'>";
     foreach ($series as $s) {
+        $urlImage = $urlBase. $s->poster_path;
+        if($s->poster_path == null){
+            $urlImage = "img/unknow.png";
+        }
         $count++;
         $ligne .= "<div class='col-xs-2'>
-<div class='thumbnail'>
-<img idseries='" . $s->id . "' class=' img-rounded img-responsive' src='" . $urlBase . $s->poster_path . "' alt='" . $s->original_name . "'>
+<div class='thumbnail imgSeriesHome'>
+<img idseries='" . $s->id . "' class='mg-rounded img-responsive' src='" . $urlImage . "' alt='" . $s->original_name . "'>
 <div class='caption'>
         <h3>" . $s->original_name . "</h3>
         <p>" . substr($s->overview, 0, 100) . "...</p>

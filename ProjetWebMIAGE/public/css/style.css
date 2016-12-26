@@ -116,3 +116,7 @@ body{
 .boutonFirstConnexion{
     margin-top: 30px;
 }
+
+.imgSeriesHome:hover{
+    box-shadow: 1px 1px 12px #555;
+}
