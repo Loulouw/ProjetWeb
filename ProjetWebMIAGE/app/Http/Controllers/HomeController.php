@@ -20,11 +20,12 @@ class HomeController extends Controller
         $request->user()->firstconnexion = 0;
         $request->user()->save();
 
-        return view("home");
+        $series= Series::paginate(30);
+        return view("home",compact('series'));
     }
 
     public function getSeries(){
-    	$series= Series::orderBy('popularity','desc')->take(30)->get();
-        return view('home');
+        $series= Series::paginate(30);
+        return view("home",compact('series'));
     }
 }

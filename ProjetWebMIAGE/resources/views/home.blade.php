@@ -37,7 +37,8 @@
                         <li><a href="#">Mon Compte</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
-                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnection</a>
+                            <a href="{{ url('/logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnection</a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
@@ -48,7 +49,40 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<div class="container-fluid text-center">
+    <?php
 
+    $seriesListFinal = "";
+
+    $urlBase = "https://image.tmdb.org/t/p/w500";
+    $count = 0;
+    $ligne = "<div class='row'>";
+    foreach ($series as $s) {
+        $count++;
+        $ligne .= "<div class='col-xs-2'>
+<div class='thumbnail'>
+<img idseries='" . $s->id . "' class=' img-rounded img-responsive' src='" . $urlBase . $s->poster_path . "' alt='" . $s->original_name . "'>
+<div class='caption'>
+        <h3>" . $s->original_name . "</h3>
+        <p>" . substr($s->overview, 0, 100) . "...</p>
+    </div>
+</div>
+</div>";
+        if ($count == 6) {
+            $count = 0;
+            $seriesListFinal .= $ligne . "</div><br><br>";
+            $ligne = "<div class='row'>";
+        }
+    }
+    if ($count != 0) {
+        $seriesListFinal .= $ligne . "</div>";
+    }
+    echo $seriesListFinal;
+
+    echo $series->render();
+    ?>
+
+</div>
 <script src="js/app.js"></script>
 </body>
 </html>
