@@ -13,8 +13,7 @@
                 if(session('messageErreurInscription')) echo session('messageErreurInscription');
                 ?>
                 <form role="form" action="{{action('InscriptionController@inscrip')}}" method="post"
-                      name="inscriptionform">
-                    {{ csrf_field() }}
+                      name="inscriptionform">d
                     <fieldset>
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 

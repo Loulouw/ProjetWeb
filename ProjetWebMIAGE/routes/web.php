@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware' => 'web'],function (){
     Route::get('/', function () {
         return view('accueil');
@@ -21,5 +22,6 @@ Route::group(['middleware' => 'web'],function (){
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/firstConnexion','FirstConnexionController@getSeries');
         Route::get('/home','HomeController@getSeries');
+        Route::post('/home','HomeController@firstConnexionSeries');
     });
 });
