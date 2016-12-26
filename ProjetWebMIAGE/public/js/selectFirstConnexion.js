@@ -41,6 +41,8 @@ $(document).ready(function () {
             button += "<button class='btn btn-success btn-block btn-lg'>Suivant</button></form>";
 
             $('#boutonFirstConnexion').append(button)
+        }else{
+            $('#boutonFirstConnexion').empty();
         }
     })
     

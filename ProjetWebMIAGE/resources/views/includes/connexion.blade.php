@@ -11,6 +11,7 @@
                 if(session('messageErreurConnexion')) echo session('messageErreurConnexion');
                 ?>
                 <form role="form" action="{{action('ConnexionController@connect')}}" method="post" name="loginform">
+                    {{ csrf_field() }}
                     <fieldset >
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 

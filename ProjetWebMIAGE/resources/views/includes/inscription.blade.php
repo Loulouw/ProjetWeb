@@ -14,6 +14,7 @@
                 ?>
                 <form role="form" action="{{action('InscriptionController@inscrip')}}" method="post"
                       name="inscriptionform">
+                    {{ csrf_field() }}
                     <fieldset>
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
