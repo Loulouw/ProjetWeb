@@ -13,9 +13,9 @@
                 if(session('messageErreurInscription')) echo session('messageErreurInscription');
                 ?>
                 <form role="form" action="{{action('InscriptionController@inscrip')}}" method="post"
-                      name="inscriptionform">d
+                      name="inscriptionform">
                     <fieldset>
-                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
                             <label for="name">Pseudo</label>

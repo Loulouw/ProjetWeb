@@ -9,6 +9,9 @@ class HomeController extends Controller
 {
 
     public function firstConnexionSeries(Request $request){
+        foreach ($request->series as $s){
+
+        }
         dd($request);
     }
 

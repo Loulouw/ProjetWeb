@@ -12,7 +12,7 @@
                 ?>
                 <form role="form" action="{{action('ConnexionController@connect')}}" method="post" name="loginform">
                     <fieldset >
-                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
                             <label for="email">E-mail</label>

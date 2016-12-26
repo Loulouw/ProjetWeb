@@ -40,8 +40,10 @@ if (isset($series)) {
     <div class="boutonDeConnexion">
         <form id="boutonFirstConnexion" role='form' action="{{action('HomeController@firstConnexionSeries')}}"
               method='post' name='firstSelectionForm'>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            {{ csrf_field() }}
+            <div id="contenuBoutonFirstConnexion">
 
+            </div>
         </form>
     </div>
 </div>

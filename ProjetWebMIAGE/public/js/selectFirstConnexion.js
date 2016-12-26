@@ -34,19 +34,21 @@ $(document).ready(function () {
         }
 
         if (seriesSelectionne.length >= 3) {
-            $('#boutonFirstConnexion').empty();
+            $('#contenuBoutonFirstConnexion').empty();
             var button = "";
+            var count=0;
             seriesSelectionne.forEach(function (e) {
-                button += "<input type='hidden' name='series[]' value='" + e + "'>"
+                count++;
+                button += "<input type='hidden' name='series[" + count + "]' value='" + e + "'>"
             });
             button += "<button class='btn btn-success btn-block btn-lg'>Suivant</button>";
-            $('#boutonFirstConnexion').append(button);
+            $('#contenuBoutonFirstConnexion').append(button);
             if (premiereSelection) {
                 premiereSelection = false;
                 $('html,body').animate({scrollTop: $("#boutonFirstConnexion").offset().top}, 'slow');
             }
         } else {
-            $('#boutonFirstConnexion').empty();
+            $('#contenuBoutonFirstConnexion').empty();
         }
     })
 
