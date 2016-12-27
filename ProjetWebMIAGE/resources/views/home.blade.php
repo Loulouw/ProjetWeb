@@ -15,7 +15,7 @@
     foreach ($series as $s) {
         $urlImage = $urlBase . $s->poster_path;
         if ($s->poster_path == null) {
-            $urlImage = "img/unknow.png";
+            $urlImage =  URL::to('/') ."/img/unknow.png";
         }
         $count++;
         $ligne .= "<div class='col-xs-2'>
@@ -42,6 +42,6 @@
     ?>
 
 </div>
-<script src="js/app.js"></script>
+<script src="{{ URL::to('/') }}/js/app.js"></script>
 </body>
 </html>

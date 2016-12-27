@@ -41,6 +41,15 @@
                 </div>
             </div>
 
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Companie">Companie</label>
+                <div class="col-md-4">
+                    <input id="Companie" name="Companie" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="rechercher"></label>

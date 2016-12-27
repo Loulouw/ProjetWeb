@@ -1,13 +1,18 @@
 <?php
 
-function decoreList($list)
+function decoreList($list, $path)
 {
     $listf = "";
     foreach ($list as $l) {
-        $listf .= $l->name . " - ";
+        if ($path != null) {
+            $listf .= "<a href='" . url('/home') . "/" . $path . "/" . $l->name . "'>" . $l->name . "</a> - ";
+        } else {
+            $listf .= $l->name . " - ";
+        }
     }
     return substr($listf, 0, -3);
 }
+
 
 $urlImage = url('/') . "/img/unknow.png";
 
@@ -25,11 +30,11 @@ if ($serie->getSerie()->in_production == 0) {
     $encours = "<button type='button' class='btn btn-success'>Terminée</button>";
 }
 
-$genrestexte = decoreList($serie->getGenres());
+$genrestexte = decoreList($serie->getGenres(), "genre");
 
-$creatorstexte = decoreList($serie->getCreators());
+$creatorstexte = decoreList($serie->getCreators(), "creator");
 
-$companiestexte = decoreList($serie->getCompanies());
+$companiestexte = decoreList($serie->getCompanies(), "companie");
 
 $listSeason = "";
 $contentTabSeason = "";
@@ -38,8 +43,8 @@ foreach ($serie->getSeasons() as $season) {
     $seasonModel = $season->getSeason();
     $countSeason++;
 
-    $nameOfSeason = "Season ".$seasonModel->number;
-    if($seasonModel->name != null && strcmp(trim($seasonModel->name),'')) $nameOfSeason = $seasonModel->name;
+    $nameOfSeason = "Season " . $seasonModel->number;
+    if ($seasonModel->name != null && strcmp(trim($seasonModel->name), '')) $nameOfSeason = $seasonModel->name;
 
     if ($countSeason == 1) {
         $listSeason .= "<li class='active'><a href='#tabPaneSeason" . $seasonModel->number . "' data-toggle='tab'>" . $nameOfSeason . "</a></li>";
@@ -51,28 +56,28 @@ foreach ($serie->getSeasons() as $season) {
     $contentTabSeason .= "<p>" . $seasonModel->overview . "</p><p>Date de diffusion : " . $seasonModel->air_date . "</p>";
 
     $contentEpisode = "";
-    $countEpisode=0;
+    $countEpisode = 0;
     foreach ($season->getEpisodes() as $episode) {
         $countEpisode++;
         $episodeModel = $episode->getEpisode();
         $urlImageEpisode = url("/") . "/img/unknow_episode.png";
         if ($episodeModel->still_path != null) $urlImageEpisode = "https://image.tmdb.org/t/p/w500" . $episodeModel->still_path;
-        if($countEpisode == 1) $contentEpisode.="<div class='wrapper'>";
+        if ($countEpisode == 1) $contentEpisode .= "<div class='wrapper'>";
         $contentEpisode .= "<div class='thumbnail episodeSeason'>"
             . "<img class='mg-rounded img-responsive' src='" . $urlImageEpisode . "' alt='Episode" . $episodeModel->number . "'>"
             . "<div class='caption'>"
             . "<h3 class='text-left'>" . $episodeModel->number . " - " . $episodeModel->name . "</h3>"
             . "<p class='text-left text-justify'>" . $episodeModel->overview . "</p>"
-            . "<p class='text-left actorsEpisode'>Acteurs : " . decoreList($episode->getActors()) . "</p>"
+            . "<p class='text-left actorsEpisode'>Acteurs : " . decoreList($episode->getActors(), null) . "</p>"
             . "</div></div>";
 
-        if($countEpisode == 2){
-            $contentEpisode.="</div>";
-            $countEpisode=0;
+        if ($countEpisode == 2) {
+            $contentEpisode .= "</div>";
+            $countEpisode = 0;
         }
     }
-    if($countEpisode != 0){
-        $contentEpisode.="</div>";
+    if ($countEpisode != 0) {
+        $contentEpisode .= "</div>";
     }
 
     $contentTabSeason .= $contentEpisode . "</div>";
@@ -97,7 +102,7 @@ foreach ($serie->getSeasons() as $season) {
             </div>
             <br>
             <div class="row">
-                {{$dateSortieSerie}} | {{$genrestexte}}
+                {{$dateSortieSerie}} | {!!$genrestexte!!}
             </div>
             <div class="row">
                 <br>
@@ -105,11 +110,11 @@ foreach ($serie->getSeasons() as $season) {
             </div>
             <div class="row">
                 <br>
-                Créateur(s) : {{$creatorstexte}}
+                Créateur(s) : {!!$creatorstexte!!}
             </div>
             <div class="row">
                 <br>
-                Companie(s) : {{$companiestexte}}
+                Companie(s) : {!!$companiestexte!!}
             </div>
         </div>
     </div>
