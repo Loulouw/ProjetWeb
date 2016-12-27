@@ -8,4 +8,5 @@ class UsersSeries extends Model
 {
     protected $table='usersseries';
     public $timestamps=false;
+    protected $primaryKey = "id";
 }

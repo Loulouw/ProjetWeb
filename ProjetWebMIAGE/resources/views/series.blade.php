@@ -14,7 +14,11 @@ function decoreList($list, $path)
 }
 
 
-$urlImage = url('/') . "/img/unknow.png";
+
+
+$urlCoeur = url('/') . "/img/dislike.png";
+if($serie->getLike()) $urlCoeur = url('/') . "/img/like.png";
+$urlCoeur = "<a href='" . url('/series')."/like/".$serie->getSerie()->id."'><img src='".$urlCoeur."' alt='Coeur'/></a>";
 
 $nomSerie = $serie->getSerie()->original_name;
 
@@ -22,9 +26,11 @@ $dateSortieSerie = $serie->getSerie()->first_air_date;
 
 $descriptionSerie = $serie->getSerie()->overview;
 
+$urlImage = url('/') . "/img/unknow.png";
 if ($serie->getSerie()->poster_path != null) {
     $urlImage = "https://image.tmdb.org/t/p/w500" . $serie->getSerie()->poster_path;
 }
+
 $encours = "<button type=\"button\" class=\"btn btn-info\">En production</button>";
 if ($serie->getSerie()->in_production == 0) {
     $encours = "<button type='button' class='btn btn-success'>Terminée</button>";
@@ -98,7 +104,7 @@ foreach ($serie->getSeasons() as $season) {
         <div class="col-md-3"><img src="{{$urlImage}}" class="img-responsive img-rounded" alt="inconnu"></div>
         <div class="col-md-9 text-left">
             <div class="row">
-                <div id="titreSeries">{{$nomSerie}} {!! $encours !!}</div>
+                <div id="titreSeries">{!!$urlCoeur!!} {{$nomSerie}} {!! $encours !!}</div>
             </div>
             <br>
             <div class="row">

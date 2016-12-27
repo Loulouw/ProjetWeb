@@ -9,10 +9,11 @@ namespace App\personnal;
 class Serie
 {
 
-    private $serie,$seasons,$genres,$creators,$companies;
+    private $serie,$seasons,$genres,$creators,$like;
 
-    public function __construct($serie,$seasons,$genres,$creators,$companies)
+    public function __construct($serie,$seasons,$genres,$creators,$companies,$like)
     {
+        $this->like=$like;
         $this->serie=$serie;
         $this->seasons = $seasons;
         $this->genres = $genres;
@@ -40,4 +41,7 @@ class Serie
         return $this->companies;
     }
 
+    public function getLike(){
+        return $this->like;
+    }
 }

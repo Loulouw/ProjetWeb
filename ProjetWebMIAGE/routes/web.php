@@ -27,6 +27,7 @@ Route::group(['middleware' => 'web'],function (){
         Route::get('/home/creator/{nom}','HomeController@rechercheCreator');
         Route::get('/home/genre/{nom}','HomeController@rechercheGenre');
         Route::get('/home/companie/{nom}','HomeController@rechercheCompanie');
+        Route::get('/series/like/{id}','SeriesController@seriesLike');
         Route::post('/logout', 'LogoutController@logout');
         Route::get('series/{id}', 'SeriesController@seriesInformation');
         Route::get('/rechercher',function (){

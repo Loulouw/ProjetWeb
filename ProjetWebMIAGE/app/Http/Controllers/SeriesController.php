@@ -12,6 +12,8 @@ use App\personnal\Season;
 use App\personnal\Serie;
 use App\Seasons;
 use App\Series;
+use App\UsersSeries;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class SeriesController extends Controller
@@ -22,24 +24,27 @@ class SeriesController extends Controller
         if (preg_match('#^[0-9]+$#', $id) and $serie != null) {
             $seasons = Seasons::join('seriesseasons', 'seriesseasons.season_id', "=", "seasons.id")
                 ->where("seriesseasons.series_id", "=", "$id")
-                ->orderBy("seasons.number","asc")
+                ->orderBy("seasons.number", "asc")
                 ->get();
 
             $listeSeasons = array();
             foreach ($seasons as $s) {
                 $episodes = Episodes::join('seasonsepisodes', 'seasonsepisodes.episode_id', '=', 'episodes.id')
                     ->where("seasonsepisodes.season_id", "=", "$s->id")
-                    ->orderBy('episodes.number','asc')
+                    ->orderBy('episodes.number', 'asc')
                     ->get();
                 $listeEpisodes = array();
                 foreach ($episodes as $e) {
                     $actors = Actors::join('episodesactors', 'episodesactors.actor_id', "=", "actors.id")
                         ->where("episodesactors.episode_id", "=", "$e->id")
                         ->get();
-                    array_push($listeEpisodes,new Episode($e,$actors));
+                    array_push($listeEpisodes, new Episode($e, $actors));
                 }
-                array_push($listeSeasons,new Season($s,$listeEpisodes));
+                array_push($listeSeasons, new Season($s, $listeEpisodes));
             }
+
+            $like=false;
+            if (UsersSeries::where('id_users', '=', Auth::user()->id)->where('id_series', '=', $id)->first() != null) $like=true;
 
             $genres = Genres::join('seriesgenres', 'seriesgenres.genre_id', '=', 'genres.id')
                 ->where("seriesgenres.series_id", "=", "$id")
@@ -54,9 +59,22 @@ class SeriesController extends Controller
                 ->get();
 
 
-            return view("series", ["serie" => new Serie($serie,$listeSeasons,$genres,$creators,$companies)]);
+            return view("series", ["serie" => new Serie($serie, $listeSeasons, $genres, $creators, $companies,$like)]);
         } else {
             return Redirect::to("/home");
         }
+    }
+
+    public function seriesLike($id){
+        $u = UsersSeries::where('id_users', '=', Auth::user()->id)->where('id_series', '=', $id)->first();
+        if ($u != null){
+            $u->delete();
+        }else{
+            $us = new UsersSeries();
+            $us->id_users=Auth::user()->id;
+            $us->id_series=$id;
+            $us->save();
+        }
+        return Redirect::to("/series/".$id);
     }
 }
