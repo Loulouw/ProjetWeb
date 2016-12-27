@@ -13,7 +13,7 @@
     src: url("../fonts/AvenirLTStd-Book.otf")
 }
 
-body{
+body {
     font-family: Avenir;
 }
 
@@ -82,18 +82,18 @@ body{
     font-size: 30px;
 }
 
-.firstconnexionpage{
+.firstconnexionpage {
     background-color: #141414;
     width: 100%;
     height: 100%;
 }
 
-.entete_firstconnexion{
-    color:white;
+.entete_firstconnexion {
+    color: white;
     margin-left: 50px;
 }
 
-.instructionFirstConnexion{
+.instructionFirstConnexion {
     font-size: 2em;
 }
 
@@ -106,21 +106,36 @@ body{
     letter-spacing: 0.2em;
 }
 
-.imgSeriesFirstConnexion{
+.imgSeriesFirstConnexion {
     width: 80%;
     border: 2px white solid;
     border-radius: 5px;
     box-shadow: 1px 1px 12px #555;
 }
 
-.boutonFirstConnexion{
+.boutonFirstConnexion {
     margin-top: 30px;
 }
 
-.imgSeriesHome{
-    text-decoration:none;
+.imgSeriesHome {
+    text-decoration: none;
 }
 
-.imgSeriesHome:hover{
+.imgSeriesHome:hover {
     box-shadow: 1px 1px 12px #555;
+}
+
+#titreSeries {
+    text-transform: uppercase;
+    font-family: AvenirBold;
+    font-size: 3em;
+}
+
+#descriptionSerie{
+    font-size: 1.2em;
+    width: 90%;
+}
+
+#seasonSeriesTabPane{
+    margin-top: 20px;
 }
