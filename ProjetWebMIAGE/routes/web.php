@@ -23,8 +23,11 @@ Route::group(['middleware' => 'web'],function (){
         Route::get('/firstConnexion','FirstConnexionController@getSeries');
         Route::get('/home','HomeController@getSeries');
         Route::post('/home','HomeController@firstConnexionSeries');
+        Route::post('/home','HomeController@recherche');
         Route::post('/logout', 'LogoutController@logout');
         Route::get('series/{id}', 'SeriesController@seriesInformation');
-        Route::get('/rechercher','rechercher');
+        Route::get('/rechercher',function (){
+           return view('rechercher');
+        });
     });
 });
