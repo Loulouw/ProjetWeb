@@ -38,11 +38,14 @@ foreach ($serie->getSeasons() as $season) {
     $seasonModel = $season->getSeason();
     $countSeason++;
 
+    $nameOfSeason = "Season ".$seasonModel->number;
+    if($seasonModel->name != null && strcmp(trim($seasonModel->name),'')) $nameOfSeason = $seasonModel->name;
+
     if ($countSeason == 1) {
-        $listSeason .= "<li class='active'><a href='#tabPaneSeason" . $seasonModel->number . "' data-toggle='tab'>" . $seasonModel->name . "</a></li>";
+        $listSeason .= "<li class='active'><a href='#tabPaneSeason" . $seasonModel->number . "' data-toggle='tab'>" . $nameOfSeason . "</a></li>";
         $contentTabSeason .= "<div class='tab-pane active' id='tabPaneSeason" . $seasonModel->number . "'>";
     } else {
-        $listSeason .= "<li><a href='#tabPaneSeason" . $seasonModel->number . "' data-toggle='tab'>" . $seasonModel->name . "</a></li>";
+        $listSeason .= "<li><a href='#tabPaneSeason" . $seasonModel->number . "' data-toggle='tab'>" . $nameOfSeason . "</a></li>";
         $contentTabSeason .= "<div class='tab-pane' id='tabPaneSeason" . $seasonModel->number . "'>";
     }
     $contentTabSeason .= "<p>" . $seasonModel->overview . "</p><p>Date de diffusion : " . $seasonModel->air_date . "</p>";
