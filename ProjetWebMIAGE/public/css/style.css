@@ -139,3 +139,15 @@ body {
 #seasonSeriesTabPane{
     margin-top: 20px;
 }
+
+.wrapper {
+    display: table;
+    table-layout: fixed;
+    margin: auto;
+    width:80%;
+    height:100%;
+}
+.wrapper div {
+    display: table-cell;
+    height:100%;
+}

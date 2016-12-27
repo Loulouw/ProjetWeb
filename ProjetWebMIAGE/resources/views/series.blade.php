@@ -48,18 +48,28 @@ foreach ($serie->getSeasons() as $season) {
     $contentTabSeason .= "<p>" . $seasonModel->overview . "</p><p>Date de diffusion : " . $seasonModel->air_date . "</p>";
 
     $contentEpisode = "";
+    $countEpisode=0;
     foreach ($season->getEpisodes() as $episode) {
+        $countEpisode++;
         $episodeModel = $episode->getEpisode();
         $urlImageEpisode = url("/") . "/img/unknow_episode.png";
         if ($episodeModel->still_path != null) $urlImageEpisode = "https://image.tmdb.org/t/p/w500" . $episodeModel->still_path;
-
-        $contentEpisode .= "<div class='thumbnail'>"
+        if($countEpisode == 1) $contentEpisode.="<div class='wrapper'>";
+        $contentEpisode .= "<div class='thumbnail episodeSeason'>"
             . "<img class='mg-rounded img-responsive' src='" . $urlImageEpisode . "' alt='Episode" . $episodeModel->number . "'>"
             . "<div class='caption'>"
             . "<h3 class='text-left'>" . $episodeModel->number . " - " . $episodeModel->name . "</h3>"
             . "<p class='text-left text-justify'>" . $episodeModel->overview . "</p>"
             . "<p class='text-left actorsEpisode'>Acteurs : " . decoreList($episode->getActors()) . "</p>"
             . "</div></div>";
+
+        if($countEpisode == 2){
+            $contentEpisode.="</div>";
+            $countEpisode=0;
+        }
+    }
+    if($countEpisode != 0){
+        $contentEpisode.="</div>";
     }
 
     $contentTabSeason .= $contentEpisode . "</div>";
