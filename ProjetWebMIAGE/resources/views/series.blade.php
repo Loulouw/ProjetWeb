@@ -14,11 +14,9 @@ function decoreList($list, $path)
 }
 
 
-
-
 $urlCoeur = url('/') . "/img/dislike.png";
-if($serie->getLike()) $urlCoeur = url('/') . "/img/like.png";
-$urlCoeur = "<a href='" . url('/series')."/like/".$serie->getSerie()->id."'><img src='".$urlCoeur."' alt='Coeur'/></a>";
+if ($serie->getLike()) $urlCoeur = url('/') . "/img/like.png";
+$urlCoeur = "<a href='" . url('/series') . "/like/" . $serie->getSerie()->id . "'><img src='" . $urlCoeur . "' alt='Coeur'/></a>";
 
 $nomSerie = $serie->getSerie()->original_name;
 
@@ -88,6 +86,37 @@ foreach ($serie->getSeasons() as $season) {
 
     $contentTabSeason .= $contentEpisode . "</div>";
 
+    $contentTabProposition = "";
+    $countProposition = 0;
+    $firstProposition = true;
+    foreach ($serieproposition as $sp) {
+        $countProposition++;
+        if ($countProposition == 1) {
+            if ($firstProposition) {
+                $contentTabProposition .= "<div class='item active'>";
+                $firstProposition = false;
+            } else {
+                $contentTabProposition .= "<div class='item'>";
+            }
+            $contentTabProposition .= "<div class='row'>";
+        }
+
+        $urlImageEpisodeProposition = url("/") . "/img/unknow_episode.png";
+        if ($sp->backdrop_path != null) $urlImageEpisodeProposition = "https://image.tmdb.org/t/p/w500" . $sp->backdrop_path;
+
+        $contentTabProposition .= " <div class='col-sm-3'>
+                                        <a href='" . url("series/$sp->id") . "' class='thumbnail'>
+                                            <img src='" . $urlImageEpisodeProposition . "' alt='" . $sp->original_name . "' class='img-responsive'>
+                                            <div class='textCarousselProposition'>" . $sp->original_name . "</div>
+                                        </a>
+                                    </div>";
+
+
+        if ($countProposition == 4) {
+            $contentTabProposition .= "</div></div>";
+            $countProposition = 0;
+        }
+    }
 }
 
 ?>
@@ -133,6 +162,27 @@ foreach ($serie->getSeasons() as $season) {
         {!! $contentTabSeason !!}
     </div>
 
+    <div class="propositionseries">
+        <hr>
+        <h3>Proposition de séries</h3>
+        <div class="col-md-12">
+            <div class="well">
+                <div id="carousselSerieProposition" class="carousel slide">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner center-block">
+                        <!--/item-->
+                        {!!$contentTabProposition!!}
+                    </div>
+                    <!--/carousel-inner-->
+                    <a class="left carousel-control" href="#carousselSerieProposition" data-slide="prev"></a>
+                    <a class="right carousel-control" href="#carousselSerieProposition" data-slide="next"></a>
+                </div>
+                <!--/myCarousel-->
+            </div>
+            <!--/well-->
+
+        </div>
+    </div>
 
 </div>
 <script src="{{ URL::to('/') }}/js/app.js"></script>

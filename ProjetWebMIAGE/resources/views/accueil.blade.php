@@ -50,7 +50,7 @@
 <?php
 
 if (session('messageErreurInscription')) echo '<script type="text/javascript">$("#modalInscription").modal("show");</script>';
-if (session('messageErreurConnexion')) echo '<script type="text/javascript">$("#modalConnexion").modal("show");</script>';
+if (session('messageInscriptionReussi') or session('messageErreurConnexion')) echo '<script type="text/javascript">$("#modalConnexion").modal("show");</script>';
 
 ?>
 </body>

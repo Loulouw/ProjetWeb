@@ -1,3 +1,11 @@
+<?php
+$contentSelectGenres = "";
+foreach ($genres as $g) {
+    $contentSelectGenres .= "<option>" . $g->name . "</option>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -36,9 +44,16 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="Genre">Genre</label>
                 <div class="col-md-4">
+                    <select class="form-control selectGenre" name="Genre" datatype="text" id="Genre">
+                        <option></option>
+                        {!!$contentSelectGenres!!}
+                    </select>
+                </div>
+                <!--<label class="col-md-4 control-label" for="Genre">Genre</label>
+                <div class="col-md-4">
                     <input id="Genre" name="Genre" type="text" placeholder="" class="form-control input-md">
 
-                </div>
+                </div>-->
             </div>
 
             <!-- Text input-->

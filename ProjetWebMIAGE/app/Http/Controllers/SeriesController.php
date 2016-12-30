@@ -50,16 +50,23 @@ class SeriesController extends Controller
                 ->where("seriesgenres.series_id", "=", "$id")
                 ->get();
 
-            $creators = Creators::join('seriescreators', "seriescreators.creator_id", "=", "creators.id")
-                ->where("seriescreators.series_id", "=", "$id")
-                ->get();
-
             $companies = Companies::join('seriescompanies', 'seriescompanies.company_id', '=', 'companies.id')
                 ->where("seriescompanies.series_id", "=", "$id")
                 ->get();
 
+            $creators = Creators::join('seriescreators', "seriescreators.creator_id", "=", "creators.id")
+                ->where("seriescreators.series_id", "=", "$id")
+                ->get();
 
-            return view("series", ["serie" => new Serie($serie, $listeSeasons, $genres, $creators, $companies,$like)]);
+            $creatorsId = array();
+            foreach ($creators as $c) array_push($creatorsId,$c->id);
+
+            $seriesProposition = Series::join('seriescreators','seriescreators.series_id','=','series.id')
+                ->whereIn('seriescreators.creator_id',$creatorsId)
+                ->where('series.id','!=',$id)
+                ->get();
+
+            return view("series", ["serie" => new Serie($serie, $listeSeasons, $genres, $creators, $companies,$like),'serieproposition' => $seriesProposition]);
         } else {
             return Redirect::to("/home");
         }

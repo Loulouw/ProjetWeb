@@ -151,3 +151,12 @@ body {
     display: table-cell;
     height:100%;
 }
+
+.carousel-control {
+    width:5%;
+}
+
+.textCarousselProposition{
+    width:100%;
+    text-decoration: none;
+}

@@ -32,7 +32,7 @@ class InscriptionController extends Controller
                 $valide=false;
             }
         }else{
-            $messageRes .= "<li>La longueur du mot passe doit être minimum de 5 caractères</li>";
+            $messageRes .= "<li>La longueur du mot passe doit être minimum de 6 caractères</li>";
             $valide=false;
         }
 
@@ -52,9 +52,9 @@ class InscriptionController extends Controller
             $user->save();
             $messageRes = "<div class=\"alert alert-success\"><strong>Inscription réussie! </strong>Veuillez-vous connecter</div>";
 
-            return Redirect::to('/')->with('messageErreurInscription',$messageRes)->with('mailConnexion',$request->email);
+            return Redirect::to('/')->with('messageInscriptionReussi',$messageRes)->with('mailConnexion',$request->email);
         }else{
-            return Redirect::to('/')->with('messageErreurInscription',$messageRes)->with('mailConnexion',$email)->with('pseudoInscription',$pseudo);
+            return Redirect::to('/')->with('messageErreurInscription',$messageRes)->with('mailInscription',$email)->with('pseudoInscription',$pseudo);
         }
     }
 

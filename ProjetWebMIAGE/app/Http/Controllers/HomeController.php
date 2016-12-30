@@ -11,7 +11,7 @@ class HomeController extends Controller
 
     public function firstConnexionSeries(Request $request)
     {
-        $idusers = $request->user()->id;
+        $idusers = Auth::user()->id;
         foreach ($request->series as $s) {
             $us = new UsersSeries();
             $us->id_users = $idusers;

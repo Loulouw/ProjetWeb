@@ -9,6 +9,7 @@
             <div class="modal-body">
                 <?php
                 if(session('messageErreurConnexion')) echo session('messageErreurConnexion');
+                if(session('messageInscriptionReussi')) echo session('messageInscriptionReussi');
                 ?>
                 <form role="form" action="{{action('ConnexionController@connect')}}" method="post" name="loginform">
                     <fieldset >
@@ -16,7 +17,7 @@
 
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input type="text" name="email" placeholder="mail@mail.com" required class="form-control" value="{{session('mail')}}"/>
+                            <input type="text" name="email" placeholder="mail@mail.com" required class="form-control" value="{{session('mailConnexion')}}"/>
                         </div>
 
                         <div class="form-group">
