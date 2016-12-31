@@ -28,8 +28,10 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/home/genre/{nom}', 'HomeController@rechercheGenre');
         Route::get('/home/companie/{nom}', 'HomeController@rechercheCompanie');
         Route::get('/series/like/{id}', 'SeriesController@seriesLike');
+        Route::get('/series/vue/{idSerie}/{idEpisode}', 'SeriesController@episodeVue');
         Route::post('/logout', 'LogoutController@logout');
         Route::get('series/{id}', 'SeriesController@seriesInformation');
         Route::get('/rechercher', 'RechercheController@getAllGenre');
+        Route::get('/suggestion', 'HomeController@getSeriesSuggestion');
     });
 });

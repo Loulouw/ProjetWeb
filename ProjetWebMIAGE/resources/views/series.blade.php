@@ -29,7 +29,7 @@ if ($serie->getSerie()->poster_path != null) {
     $urlImage = "https://image.tmdb.org/t/p/w500" . $serie->getSerie()->poster_path;
 }
 
-$encours = "<button type=\"button\" class=\"btn btn-info\">En production</button>";
+$encours = "<button type='button' class='btn btn-info'>En production</button>";
 if ($serie->getSerie()->in_production == 0) {
     $encours = "<button type='button' class='btn btn-success'>Terminée</button>";
 }
@@ -65,12 +65,21 @@ foreach ($serie->getSeasons() as $season) {
         $countEpisode++;
         $episodeModel = $episode->getEpisode();
         $urlImageEpisode = url("/") . "/img/unknow_episode.png";
+
         if ($episodeModel->still_path != null) $urlImageEpisode = "https://image.tmdb.org/t/p/w500" . $episodeModel->still_path;
+
         if ($countEpisode == 1) $contentEpisode .= "<div class='wrapper'>";
+
+
+        $buttonVue = "<a href='". url('/series') . "/vue/" . $serie->getSerie()->id."/".$episodeModel->id."' class='btn btn-danger' role='button'>Non vue</a>";
+        if($episode->getVue()){
+            $buttonVue = "<a href='".url('/series') . "/vue/" . $serie->getSerie()->id."/".$episodeModel->id."' class='btn btn-success' role='button'>Vue</a>";
+        }
+
         $contentEpisode .= "<div class='thumbnail episodeSeason'>"
             . "<img class='mg-rounded img-responsive' src='" . $urlImageEpisode . "' alt='Episode" . $episodeModel->number . "'>"
             . "<div class='caption'>"
-            . "<h3 class='text-left'>" . $episodeModel->number . " - " . $episodeModel->name . "</h3>"
+            . "<h3 class='text-left'>" . $episodeModel->number . " - " . $episodeModel->name . " " . $buttonVue ."</h3>"
             . "<p class='text-left text-justify'>" . $episodeModel->overview . "</p>"
             . "<p class='text-left actorsEpisode'>Acteurs : " . decoreList($episode->getActors(), null) . "</p>"
             . "</div></div>";

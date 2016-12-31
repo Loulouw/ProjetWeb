@@ -9,12 +9,13 @@ namespace App\personnal;
 class Episode
 {
 
-    private $episode,$actors;
+    private $episode,$actors,$vue;
 
-    public function __construct($episode,$actors)
+    public function __construct($episode,$actors,$vue)
     {
         $this->episode=$episode;
         $this->actors=$actors;
+        $this->vue=$vue;
     }
 
     public function getEpisode(){
@@ -23,6 +24,10 @@ class Episode
 
     public function getActors(){
         return $this->actors;
+    }
+
+    public function getVue(){
+        return $this->vue;
     }
 
 }

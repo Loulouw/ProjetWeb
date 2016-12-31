@@ -49,11 +49,6 @@ foreach ($genres as $g) {
                         {!!$contentSelectGenres!!}
                     </select>
                 </div>
-                <!--<label class="col-md-4 control-label" for="Genre">Genre</label>
-                <div class="col-md-4">
-                    <input id="Genre" name="Genre" type="text" placeholder="" class="form-control input-md">
-
-                </div>-->
             </div>
 
             <!-- Text input-->

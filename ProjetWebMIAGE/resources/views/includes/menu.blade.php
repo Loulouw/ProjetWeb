@@ -16,6 +16,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{url('home')}}">Accueil</a></li>
                 <li><a href="#">Ma Bibliothèque</a></li>
+                <li><a href="{{url('suggestion')}}">Mes Suggestions</a></li>
                 <li><a href="{{url('rechercher')}}">Rechercher</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

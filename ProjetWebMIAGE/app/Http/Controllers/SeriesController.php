@@ -12,6 +12,7 @@ use App\personnal\Season;
 use App\personnal\Serie;
 use App\Seasons;
 use App\Series;
+use App\UsersEpisodes;
 use App\UsersSeries;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -38,13 +39,18 @@ class SeriesController extends Controller
                     $actors = Actors::join('episodesactors', 'episodesactors.actor_id', "=", "actors.id")
                         ->where("episodesactors.episode_id", "=", "$e->id")
                         ->get();
-                    array_push($listeEpisodes, new Episode($e, $actors));
+
+                    $vue = false;
+                    $ue = UsersEpisodes::where('user_id', '=', Auth::user()->id)->where('episode_id', '=', $e->id)->first();
+                    if ($ue != null) $vue = true;
+
+                    array_push($listeEpisodes, new Episode($e, $actors, $vue));
                 }
                 array_push($listeSeasons, new Season($s, $listeEpisodes));
             }
 
-            $like=false;
-            if (UsersSeries::where('id_users', '=', Auth::user()->id)->where('id_series', '=', $id)->first() != null) $like=true;
+            $like = false;
+            if (UsersSeries::where('id_users', '=', Auth::user()->id)->where('id_series', '=', $id)->first() != null) $like = true;
 
             $genres = Genres::join('seriesgenres', 'seriesgenres.genre_id', '=', 'genres.id')
                 ->where("seriesgenres.series_id", "=", "$id")
@@ -59,29 +65,44 @@ class SeriesController extends Controller
                 ->get();
 
             $creatorsId = array();
-            foreach ($creators as $c) array_push($creatorsId,$c->id);
+            foreach ($creators as $c) array_push($creatorsId, $c->id);
 
-            $seriesProposition = Series::join('seriescreators','seriescreators.series_id','=','series.id')
-                ->whereIn('seriescreators.creator_id',$creatorsId)
-                ->where('series.id','!=',$id)
+            $seriesProposition = Series::join('seriescreators', 'seriescreators.series_id', '=', 'series.id')
+                ->whereIn('seriescreators.creator_id', $creatorsId)
+                ->where('series.id', '!=', $id)
                 ->get();
 
-            return view("series", ["serie" => new Serie($serie, $listeSeasons, $genres, $creators, $companies,$like),'serieproposition' => $seriesProposition]);
+            return view("series", ["serie" => new Serie($serie, $listeSeasons, $genres, $creators, $companies, $like), 'serieproposition' => $seriesProposition]);
         } else {
             return Redirect::to("/home");
         }
     }
 
-    public function seriesLike($id){
+    public function seriesLike($id)
+    {
         $u = UsersSeries::where('id_users', '=', Auth::user()->id)->where('id_series', '=', $id)->first();
-        if ($u != null){
+        if ($u != null) {
             $u->delete();
-        }else{
+        } else {
             $us = new UsersSeries();
-            $us->id_users=Auth::user()->id;
-            $us->id_series=$id;
+            $us->id_users = Auth::user()->id;
+            $us->id_series = $id;
             $us->save();
         }
-        return Redirect::to("/series/".$id);
+        return Redirect::to("/series/" . $id);
+    }
+
+    public function episodeVue($idSerie, $idEpisode)
+    {
+        $s = UsersEpisodes::where('user_id', '=', Auth::user()->id)->where('episode_id', "=", $idEpisode)->first();
+        if ($s != null) {
+            $s->delete();
+        } else {
+            $s = new UsersEpisodes();
+            $s->user_id = Auth::user()->id;
+            $s->episode_id = $idEpisode;
+            $s->save();
+        }
+        return Redirect::to("/series/" . $idSerie);
     }
 }

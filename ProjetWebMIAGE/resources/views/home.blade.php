@@ -33,6 +33,9 @@
             $ligne = "<div class='row'>";
         }
     }
+
+    if(count($series) == 0) $seriesListFinal .= "Aucune série trouvée...";
+
     if ($count != 0) {
         $seriesListFinal .= $ligne . "</div>";
     }
