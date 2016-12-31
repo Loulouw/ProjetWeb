@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{{url('home')}}">Accueil</a></li>
-                <li><a href="#">Ma Bibliothèque</a></li>
+                <li><a href="{{url('bibliotheque')}}">Ma Bibliothèque</a></li>
                 <li><a href="{{url('suggestion')}}">Mes Suggestions</a></li>
                 <li><a href="{{url('rechercher')}}">Rechercher</a></li>
             </ul>

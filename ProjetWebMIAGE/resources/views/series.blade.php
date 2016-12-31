@@ -126,6 +126,9 @@ foreach ($serie->getSeasons() as $season) {
             $countProposition = 0;
         }
     }
+    if($countProposition != 0){
+        $contentTabProposition .= "</div></div>";
+    }
 }
 
 ?>

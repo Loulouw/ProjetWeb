@@ -33,5 +33,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('series/{id}', 'SeriesController@seriesInformation');
         Route::get('/rechercher', 'RechercheController@getAllGenre');
         Route::get('/suggestion', 'HomeController@getSeriesSuggestion');
+        Route::get('/bibliotheque','BibliothequeController@getSeriesAndEpisode');
     });
 });
