@@ -41,7 +41,7 @@
     }
     echo $seriesListFinal;
 
-    echo $series->render();
+    if(!is_array($series)) echo $series->render();
     ?>
 
 </div>
