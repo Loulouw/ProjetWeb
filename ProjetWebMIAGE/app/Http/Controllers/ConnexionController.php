@@ -6,9 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
-
+/**
+ * Class ConnexionController
+ *
+ * Controller contenant les méthdodes pour la Connexion
+ *
+ * @package App\Http\Controllers
+ */
 class ConnexionController extends Controller
 {
+
+    /**
+     * Vérifie les informations et conencte l'utilisateur
+     *
+     * @param Request $request Parametre de la requete
+     * @return Une vue en fonction de la connexion réussi ou non
+     */
     public function connect(Request $request)
     {
         $messageRes = "<div class=\"alert alert-danger\">";

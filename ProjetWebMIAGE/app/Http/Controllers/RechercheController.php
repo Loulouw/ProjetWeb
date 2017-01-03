@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 class RechercheController extends Controller
 {
 
+    /**
+     * On récupère tous les genres existant
+     * @return vue recherche avec les genres
+     */
     public function getAllGenre()
     {
         $genres = Genres::all();
