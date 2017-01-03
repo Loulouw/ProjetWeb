@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Series;
-use App\SeriesGenres;
 use App\UsersSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

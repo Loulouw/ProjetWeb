@@ -165,11 +165,9 @@ foreach ($serie->getSeasons() as $season) {
             </div>
         </div>
     </div>
-
     <ul id="seasonSeriesTabPane" class="nav nav-tabs">
         {!! $listSeason !!}
     </ul>
-
     <div class="tab-content ">
         {!! $contentTabSeason !!}
     </div>

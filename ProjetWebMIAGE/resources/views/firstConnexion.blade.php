@@ -39,7 +39,7 @@ if (isset($series)) {
     </div>
     <div class="boutonDeConnexion">
         <form id="boutonFirstConnexion" role='form' action="{{action('HomeController@firstConnexionSeries')}}"
-              method='post' name='firstSelectionForm'>
+              method='post' name='firstConnexionSeries'>
             {{ csrf_field() }}
             <div id="contenuBoutonFirstConnexion">
 

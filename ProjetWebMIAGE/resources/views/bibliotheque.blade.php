@@ -60,13 +60,47 @@ if($count!=0){
                 <!--/myCarousel-->
             </div>
             <!--/well-->
-
         </div>
     </div>
     <div class="episodeVue">
         <h3>Mes épisodes vus</h3>
         <hr>
+        <?php
+        $seriesListFinal = "";
+        $urlBase = "https://image.tmdb.org/t/p/w500";
+        $count = 0;
+        $ligne = "<div class='row'>";
+        foreach ($encours as $s) {
+            $urlImage = $urlBase . $s->poster_path;
+            if ($s->poster_path == null) {
+                $urlImage =  URL::to('/') ."/img/unknow.png";
+            }
+            $count++;
+            $ligne .= "<div class='col-xs-2'>
+<a href='". url("series/$s->id") ."'><div class='thumbnail imgSeriesHome'>
+<img idseries='" . $s->id . "' class='mg-rounded img-responsive' src='" . $urlImage . "' alt='" . $s->original_name . "'>
+<div class='caption'>
+        <h3>" . $s->original_name . "</h3>
+        <p>" . substr($s->overview, 0, 100) . "...</p>
+    </div>
+</div></a>
+</div>";
+            if ($count == 6) {
+                $count = 0;
+                $seriesListFinal .= $ligne . "</div><br><br>";
+                $ligne = "<div class='row'>";
+            }
+        }
 
+        if(count($encours) == 0) $seriesListFinal .= "Aucune série trouvée...";
+
+        if ($count != 0) {
+            $seriesListFinal .= $ligne . "</div>";
+        }
+        echo $seriesListFinal;
+
+        if(!is_array($encours)) echo $encours->render();
+        ?>
     </div>
 </div>
 <script src="js/app.js"></script>

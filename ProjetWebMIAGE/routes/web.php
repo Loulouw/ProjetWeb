@@ -22,7 +22,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/firstConnexion', 'FirstConnexionController@getSeries');
         Route::get('/home', 'HomeController@getSeries');
-        Route::post('/home', 'HomeController@firstConnexionSeries');
+        Route::post('/homeFirst', 'HomeController@firstConnexionSeries');
         Route::post('/home', 'HomeController@recherche');
         Route::get('/home/creator/{nom}', 'HomeController@rechercheCreator');
         Route::get('/home/genre/{nom}', 'HomeController@rechercheGenre');

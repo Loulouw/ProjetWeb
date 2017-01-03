@@ -14,7 +14,5 @@ class FirstConnexionController extends Controller
         }else{
             return view('home');
         }
-
-
     }
 }
